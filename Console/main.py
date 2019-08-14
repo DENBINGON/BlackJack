@@ -6,7 +6,7 @@ start = 1
 while start == 1:
     clear()
     print('''
-    Добро пожаловать в консольный БЛЭКДЖЕК
+    Добро пожаловать в консольный BLACKJACK
     Раз - раб : DENBINGON
     GiT : https://github.com/denbingon/
     VK : https://vk.com/denbingon
@@ -16,6 +16,7 @@ while start == 1:
     start = int(input('    Выбор --> '))
 
     if start == 2:
-        print('    Возвращайтесь еще!')
+        clear()
+        print('\n    Возвращайтесь еще!\n')
     else:
         start_play()

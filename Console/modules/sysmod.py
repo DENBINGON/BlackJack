@@ -1,7 +1,5 @@
 import os
 
 def clear():
-    try:
-        os.system('cls')
-    except:
-        os.system('clear')
+    os.system('cls')
+    os.system('clear')

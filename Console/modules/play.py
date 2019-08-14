@@ -1,13 +1,72 @@
 from .cards import *
-from .sysmod import clear
+from .sysmod import *
+import time
 
-def lose():
+def win():
     clear()
-    print('''
-    ВЫ ПРОИГРАЛИ
-    нажмите Enter для новой игры
+    print('    ВЫ ПОБЕДИЛИ')
+    print(f'''
+Нажмите Enter для новой игры
     ''')
     input()
+
+def notwin():
+    clear()
+    print('    НИЧЬЯ')
+    print(f'''
+Нажмите Enter для новой игры
+    ''')
+    input()
+
+def lose(player, nump):
+    clear()
+    print(f'''
+    ВЫ ПРОИГРАЛИ''')
+    print(f'''
+Нажмите Enter для новой игры''')
+
+    input()
+
+def dealer_part(dealer, player):
+    clear()
+    dealer_time = 1
+    numd = 0
+    nump = 0
+    print(f'''-------------------------
+    Карты дилера:''')
+    for card in dealer:
+        numd += get_value(card)
+        print(f'    {card}')
+    print(f'''    Количество очков - {numd}
+
+-------------------------
+    Ваши карты:''')
+    for card in player:
+        nump += get_value(card)
+        print(f'    {card}')
+    print(f'    Количество очков - {nump}')
+
+    time.sleep(5)
+    while dealer_time == 1:
+        if numd >= 17:
+            if nump > numd:
+                dealer_time = 2
+                win()
+            elif nump == numd:
+                dealer_time = 2
+                notwin()
+            elif nump < numd:
+                dealer_time = 2
+                lose(dealer, player)
+        elif numd > 21:
+            dealer_time = 2
+            win()
+        else:
+            dealer.append(get_cards())
+            numd = 0
+            for card in dealer:
+                numd += get_value(card)
+
 def start_play():
     clear()
     print('''
@@ -40,12 +99,13 @@ def start_play():
 ''')
     if nump == 21:
         print('    BLACKJACK')
+        dealer_part(dealer, player)
     else:
         print('''   Взять еще?
-    1 - Да 2 - Нет
+   1 - Да 2 - Нет
 ''')
         while player_select == 1:
-            player_select = int(input('    Выбор --> '))
+            player_select = int(input('   Выбор --> '))
             if player_select == 1:
                 clear()
                 player.append(get_cards())
@@ -64,6 +124,8 @@ def start_play():
                 print(f'''    Сумма очков = {nump}
 ----------------------------------------
 ''')
+            else:
+                dealer_part(dealer, player)
             if nump < 21:
                 print('''   Взять еще?
     1 - Да 2 - Нет
@@ -72,4 +134,4 @@ def start_play():
                 player_select = 2
             else:
                 player_select = 2
-                lose()
+                lose(player, nump)
