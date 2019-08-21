@@ -1,5 +1,7 @@
-import os
+import os, time
 
 def clear():
-    os.system('cls')
-    os.system('clear')
+    try:
+        os.system('cls')
+    except:
+        os.system('clear')

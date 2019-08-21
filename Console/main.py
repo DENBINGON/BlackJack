@@ -1,22 +1,22 @@
-from modules.play import *
+# -*- coding: utf-8 -*-
+
+from modules.play import start_play
 from modules.sysmod import clear
+from modules.render import origin
 
-start = 1
+class startgame(object):
 
-while start == 1:
-    clear()
-    print('''
-    Добро пожаловать в консольный BLACKJACK
-    Раз - раб : DENBINGON
-    GiT : https://github.com/denbingon/
-    VK : https://vk.com/denbingon
-    Новая игра - 1 Выход - 2
-    ''')
+    def __init__(self, *args, **kwargs):
+        start = 1
+        while start == 1:
+            clear()
+            origin()
+            start = int(input('    Выбор --> '))
+            if start == 2:
+                clear()
+                print('\n    Возвращайтесь еще!\n')
+                input()
+            else:
+                start_play()
 
-    start = int(input('    Выбор --> '))
-
-    if start == 2:
-        clear()
-        print('\n    Возвращайтесь еще!\n')
-    else:
-        start_play()
+start = startgame()
