@@ -11,12 +11,19 @@ class startgame(object):
         while start == 1:
             clear()
             origin()
-            start = int(input('    Выбор --> '))
-            if start == 2:
-                clear()
-                print('\n    Возвращайтесь еще!\n')
-                input()
-            else:
-                start_play()
+            try:
+                try:
+                    start = int(input('    Выбор --> '))
+                except:
+                    start = int(input('    Выбор --> ')[:-1])
+                if start == 2:
+                    clear()
+                    print('\n    Возвращайтесь еще!\n')
+                    input()
+                else:
+                    start_play()
+            except:
+                wrongInput()
+
 
 start = startgame()
