@@ -3,6 +3,9 @@ from .sysmod import *
 from .render import *
 import time
 
+def blackjack(dealer, player):
+    black_win()
+
 def dealer_part(dealer, player):
     clear()
     dealer_time = 1
@@ -60,13 +63,18 @@ def start_play():
         nump += get_value(card)
     numd = get_value(dealer[0])
     views_card(player, dealer, nump, numd, 1)
+    #CHEAT
+    #nump = 21
     if nump == 21:
         print('    BLACKJACK')
-        dealer_part(dealer, player)
+        blackjack(dealer, player)
     else:
         questionAddCard()
         while player_select == 1:
-            player_select = int(input('   Выбор --> '))
+            try:
+                player_select = int(input('    Выбор --> '))
+            except:
+                player_select = int(input('    Выбор --> ')[:-1])
             if player_select == 1:
                 clear()
                 player.append(get_cards())
