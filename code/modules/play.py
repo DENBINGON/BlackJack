@@ -47,7 +47,7 @@ def start_play():
     # block hello
     clear()
     begin()
-    time.sleep(1.5)
+    time.sleep(0.5)
     clear()
     #block memories
     dealer = []
@@ -71,10 +71,7 @@ def start_play():
     else:
         questionAddCard()
         while player_select == 1:
-            try:
-                player_select = int(input('    Выбор --> '))
-            except:
-                player_select = int(input('    Выбор --> ')[:-1])
+            player_select = correctInput()
             if player_select == 1:
                 clear()
                 player.append(get_cards())
@@ -90,6 +87,7 @@ def start_play():
                 questionAddCard()
             elif nump == 21:
                 player_select = 2
+                dealer_part(dealer, player)
             else:
                 player_select = 2
                 lose(player, dealer, nump, numd, 2)

@@ -6,10 +6,25 @@ def clear():
     except:
         os.system('clear')
 
-def wrongInput():
+def wrongInput_cls():
     clear()
-    print('\n    Please, try again!')
-    time.sleep(3)
+    print('\n    Неизвестный ответ, попробуйте еще!')
+    time.sleep(1)
+
+def wrongInput():
+    print('    Неизвестный ответ, попробуйте еще!')
 
 def killProgram():
     raise SystemExit
+
+def correctInput():
+    true = 1
+    nums = [1, 2]
+    while true == 1:
+        try:
+            num = int(input('    Выбор --> '))
+            if num in nums:
+                true = 2
+            else:wrongInput()
+        except:wrongInput()
+    return num
