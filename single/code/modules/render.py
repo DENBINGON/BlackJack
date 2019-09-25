@@ -74,9 +74,6 @@ def views_card(cardp, cardd, nump, numd, stat):
    СУММА ОЧКОВ:    {nump}                                                ''')
     print(f'''+-------------------------------------+''')
 
-
-
-
 def begin():
     print('''
               +----------+
